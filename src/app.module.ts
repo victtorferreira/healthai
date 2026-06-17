@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -29,6 +30,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       }),
     }),
 
+    AuthModule
+    
     // Módulos do domínio — serão adicionados semana a semana
     // TenantModule,
     // AuthModule,
