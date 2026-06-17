@@ -1,7 +1,7 @@
 import { Column, Entity, ManyToOne, JoinColumn, Index } from 'typeorm';
 import { BaseEntity } from '../../database/base.entity';
 import { Tenant } from '../tenant/tenant.entity';
-import { User } from '../user/user.entity';
+import { User } from '../user/entities/user.entity';
 
 export enum BiologicalSex {
   MALE = 'male',

@@ -1,6 +1,6 @@
+import { BaseEntity } from 'src/database/base.entity';
+import { Tenant } from 'src/modules/tenant/tenant.entity';
 import { Column, Entity, ManyToOne, JoinColumn, Index } from 'typeorm';
-import { BaseEntity } from '../../database/base.entity';
-import { Tenant } from '../tenant/tenant.entity';
 
 export enum UserRole {
   TENANT_ADMIN = 'tenant_admin',
