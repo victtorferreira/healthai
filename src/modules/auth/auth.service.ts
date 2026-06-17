@@ -1,4 +1,8 @@
-import { Injectable, ConflictException, UnauthorizedException } from "@nestjs/common";
+import {
+  Injectable,
+  ConflictException,
+  UnauthorizedException,
+} from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import * as bcrypt from "bcrypt";
@@ -16,7 +20,7 @@ export class AuthService {
 
     @InjectRepository(Tenant)
     private tenantRepo: Repository<Tenant>,
-    private jwtService:JwtService,
+    private jwtService: JwtService,
   ) {}
 
   async register(dto: RegisterDto) {
@@ -65,14 +69,33 @@ export class AuthService {
 
     await this.userRepo.save(user);
 
+    const payload = {
+      sub: user.id,
+
+      email: user.email,
+
+      role: user.role,
+
+      tenantId: tenant.id,
+    };
+
+    const access_token = this.jwtService.sign(payload);
+
     return {
       message: "Conta criada com sucesso",
 
+      access_token,
+
       user: {
         id: user.id,
+
         name: user.name,
+
         email: user.email,
+
         role: user.role,
+
+        tenantId: tenant.id,
       },
     };
   }

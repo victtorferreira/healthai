@@ -16,6 +16,8 @@ import { Tenant } from "../tenant/tenant.entity";
     TypeOrmModule.forFeature([User, Tenant]),
 
     JwtModule.registerAsync({
+      imports: [ConfigModule],
+
       inject: [ConfigService],
 
       useFactory: (config: ConfigService) => ({
@@ -32,6 +34,6 @@ import { Tenant } from "../tenant/tenant.entity";
 
   providers: [AuthService],
 
-  exports: [AuthService],
+  exports: [AuthService, JwtModule],
 })
 export class AuthModule {}
