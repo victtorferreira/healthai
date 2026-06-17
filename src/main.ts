@@ -10,7 +10,7 @@ async function bootstrap() {
   // Prefixo global da API
   app.setGlobalPrefix('api/v1');
 
-  // Validação automática de DTOs com class-validator
+  
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,        // remove campos não declarados no DTO
